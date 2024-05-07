@@ -1,4 +1,4 @@
-import { HttpResponse, bypass, http } from "msw";
+import { HttpResponse, bypass, http, passthrough } from "msw";
 import { setupWorker } from "msw/browser";
 
 export const worker = setupWorker(
@@ -8,8 +8,9 @@ export const worker = setupWorker(
         return HttpResponse.json({
             ...data
         }, { headers: {'custom-header': 'test-header'} });
-    })
-    // http.get('https://jsonplaceholder.typicode.com/todos/1', async () => {
-    //    return new HttpResponse("No data", { status: 404 });
-    // })
+    }),
+    http.get('https://jsonplaceholder.typicode.com/todos/2', async () => {
+       return new HttpResponse("No data", { status: 404 });
+    }),
+    http.get('*', () => passthrough())
 );
