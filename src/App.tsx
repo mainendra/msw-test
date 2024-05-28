@@ -19,6 +19,7 @@ function App() {
             <button onClick={() => request(1)}>Request 1</button>
             <button onClick={() => request(2)}>Request 2</button>
             <button onClick={() => request(3)}>Request 3</button>
+            <button onClick={() => request(4)}>Request 4</button>
         </>
     );
 }

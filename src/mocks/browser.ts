@@ -12,5 +12,8 @@ export const worker = setupWorker(
     http.get('https://jsonplaceholder.typicode.com/todos/2', async () => {
        return new HttpResponse("No data", { status: 404 });
     }),
+    http.get('https://jsonplaceholder.typicode.com/todos/4', async () => {
+       return new HttpResponse("Unauthorized", { status: 401 });
+    }),
     http.get('*', () => passthrough())
 );
